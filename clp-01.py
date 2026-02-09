@@ -13,11 +13,13 @@ print(f"The maximum number is: {problem1()}")
 
 def problem2():
     x = abs(int(input("Enter a number: ")))
+    if(x == 0):
+        return 1, 0
     count = 0
     sum = 0
     while(x>0):
         y = x%10
-        x = int(x/10)
+        x = x//10
         count += 1
         sum += y
     return count, sum
@@ -43,17 +45,13 @@ def problem3():
     key = int(input("Enter the element you want to search: "))
     lb = 0
     ub = n-1
-    flag = 0
     while(lb<=ub):
-        mid = int((lb+ub)/2)
+        mid = (lb+ub)//2
         if(newList[mid] == key):
-            flag = 1
+            return mid
         elif(newList[mid]<key):
             lb = mid+1
         else:
             ub = mid-1
-    if(flag == 1):
-        return 0
-    else:
-        return -1
+    return -1
 print(problem3())
