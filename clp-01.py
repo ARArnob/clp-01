@@ -12,7 +12,7 @@ def problem1():
 print(f"The maximum number is: {problem1()}")
 
 def problem2():
-    x = int(input("Enter a number: "))
+    x = abs(int(input("Enter a number: ")))
     count = 0
     sum = 0
     while(x>0):
@@ -24,3 +24,36 @@ def problem2():
 a, b = problem2()
 print(f"Number of digits = {a}")
 print(f"Sum of the digits = {b}")
+
+def problem3():
+    n = int(input("Enter the number of items: "))
+    newList = []
+    for i in range (n):
+        newList.append(int(input(f"Enter item no. {i+1}: ")))
+    for i in range(n-1):
+        flag = 0
+        for j in range(n-1-i):
+            if(newList[j]>newList[j+1]):
+                temp = newList[j]
+                newList[j] = newList[j+1]
+                newList[j+1] = temp
+                flag = 1
+        if(flag == 0):
+            break;
+    key = int(input("Enter the element you want to search: "))
+    lb = 0
+    ub = n-1
+    flag = 0
+    while(lb<=ub):
+        mid = int((lb+ub)/2)
+        if(newList[mid] == key):
+            flag = 1
+        elif(newList[mid]<key):
+            lb = mid+1
+        else:
+            ub = mid-1
+    if(flag == 1):
+        return 0
+    else:
+        return -1
+print(problem3())
